@@ -42,5 +42,5 @@ COPY server.properties /minecraft/server.properties
 
 CMD ["/bin/bash", "/minecraft/ServerStart.sh"]
 
-ENV MOTD A Minecraft (Direwolf20 1.10 1.13) Server Powered by Docker
-ENV NVM_OPTS -Xms2048m -Xmx2048m
+##ENV MOTD A Minecraft (Direwolf20 1.10 1.13) Server Powered by Docker
+##ENV NVM_OPTS -Xms2048m -Xmx2048m
