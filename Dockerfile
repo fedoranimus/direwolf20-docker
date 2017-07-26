@@ -22,6 +22,8 @@ VOLUME /minecraft
 ADD server.properties /tmp/server.properties
 WORKDIR /minecraft
 
+RUN chmod +x start.sh
+
 CMD /start
 
 ENV MOTD A Minecraft (Direwolf20 1.10 1.13) Server Powered by Docker
