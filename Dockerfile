@@ -1,30 +1,42 @@
-FROM java:8
+FROM java:8-jre
 
 MAINTAINER Tim Turner <timdturner@gmail.com>
 
-RUN apt-get update && apt-get install -y wget unzip
-RUN addgroup -gid 1234 minecraft
-RUN adduser --disabled-password --home=/data --uid 1234 --gid 1234 --gecos "minecraft user" minecraft
+# Updating container
+RUN apt-get update && \
+	apt-get upgrade --yes --force-yes && \
+	apt-get clean && \ 
+	rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /tmp/ftb && cd /tmp/ftb && \
+# Setting workdir
+WORKDIR /minecraft
+
+# Changing user to root
+USER root
+
+# Creating user and downloading files
+RUN useradd -m -U minecraft && \
+        mkdir /tmp/ftb && cd /tmp/ftb && \
         wget -c https://www.feed-the-beast.com/projects/ftb-presents-direwolf20-1-10/files/2447188/download -O ftb.zip && \
         unzip ftb.zip && \
         rm ftb.zip && \
-        bash -x FTBInstall.sh && \
-        chown -R minecraft /tmp/ftb
+        chmod u+x FTBInstall.sh ServerStart.sh && \
+        echo "#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula)." > eula.txt && \
+	echo "$(date)" >> eula.txt && \
+	echo "eula=TRUE" >> eula.txt && \
+        chown -R minecraft:minecraft /tmp/ftb
 
 USER minecraft
+
+RUN /minecraft/FTBInstall.sh
+
 EXPOSE 25565
 
-ADD start.sh /start
-
 VOLUME /minecraft
-ADD server.properties /tmp/server.properties
+COPY server.properties /tmp/server.properties
 WORKDIR /minecraft
 
-RUN chmod +x start.sh
-
-CMD /start
+CMD ["/bin/bash", "/minecraft/ServerStart.sh"]
 
 ENV MOTD A Minecraft (Direwolf20 1.10 1.13) Server Powered by Docker
 ENV LEVEL world
