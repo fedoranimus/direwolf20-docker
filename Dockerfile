@@ -37,10 +37,12 @@ EXPOSE 25565
 # Expose volume
 VOLUME ["/minecraft/world"]
 
+RUN echo ""
+
 # Copy server.properties file
 COPY server.properties /minecraft/server.properties
 
-CMD ["/bin/bash", "/minecraft/ServerStart.sh"]
+#CMD ["/bin/bash", "/minecraft/ServerStart.sh"]
 
 ##ENV MOTD A Minecraft (Direwolf20 1.10 1.13) Server Powered by Docker
 ##ENV NVM_OPTS -Xms2048m -Xmx2048m
