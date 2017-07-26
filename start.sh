@@ -4,7 +4,7 @@ set -e
 
 cd /data
 
-cp -rf /tmp/feed-the-beast/* .
+cp -rf /tmp/ftb/* .
 echo "eula=true" > eula.txt
 
 if [[ ! -e server.properties ]]; then
