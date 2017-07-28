@@ -39,7 +39,7 @@ COPY server.properties server.properties
 COPY white-list.txt white-list.txt
 
 # Expose volume
-VOLUME ["/minecraft/world", "/minecraft/backups", "/minecraft/server.properties", "/minecraft/white-list.txt"]
+VOLUME ["/minecraft/world", "/minecraft/backups"]
 
 CMD ["/bin/bash", "./ServerStart.sh"]
 
