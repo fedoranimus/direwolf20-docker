@@ -39,8 +39,9 @@ VOLUME ["/minecraft/world", "/minecraft/backups", "/minecraft/server.properties"
 
 RUN echo ""
 
-# Copy server.properties file
-# COPY server.properties /minecraft/server.properties
+# Copy server.properties file & white-list
+COPY server.properties /minecraft/server.properties
+COPY white-list.txt /minecraft/white-list.txt
 
 CMD ["/bin/bash", "./ServerStart.sh"]
 
