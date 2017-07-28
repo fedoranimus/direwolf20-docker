@@ -35,12 +35,12 @@ RUN /minecraft/FTBInstall.sh
 EXPOSE 25565
 
 # Expose volume
-VOLUME ["/minecraft/world"]
+VOLUME ["/minecraft/world", "/minecraft/backups", "/minecraft/server.properties", "/minecraft/white-list.txt"]
 
 RUN echo ""
 
 # Copy server.properties file
-COPY server.properties /minecraft/server.properties
+# COPY server.properties /minecraft/server.properties
 
 CMD ["/bin/bash", "./ServerStart.sh"]
 
