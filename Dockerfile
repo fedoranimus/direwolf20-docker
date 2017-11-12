@@ -38,6 +38,7 @@ EXPOSE 25565
 COPY server.properties server.properties
 COPY whitelist.json whitelist.json
 COPY ops.json ops.json
+COPY settings-local.sh settings-local.sh
 
 # Expose volume
 VOLUME ["/minecraft/world", "/minecraft/backups"]

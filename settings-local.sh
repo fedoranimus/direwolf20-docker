@@ -1,0 +1,1 @@
+export MAX_RAM="10240M"       # -Xmx
