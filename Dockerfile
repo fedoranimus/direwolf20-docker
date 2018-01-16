@@ -17,7 +17,7 @@ USER root
 # Creating user and downloading files
 RUN useradd -m -U minecraft && \
         mkdir -p /minecraft/world && \
-        wget -c https://www.feed-the-beast.com/projects/ftb-presents-direwolf20-1-12/files/2519623/download -O ftb.zip && \
+        wget -c https://www.feed-the-beast.com/projects/ftb-presents-direwolf20-1-12/files/2520499/download -O ftb.zip && \
         unzip ftb.zip && \
         rm ftb.zip && \
         chmod u+x FTBInstall.sh ServerStart.sh && \
