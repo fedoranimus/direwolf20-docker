@@ -17,7 +17,7 @@ USER root
 # Creating user and downloading files
 RUN useradd -m -U minecraft && \
         mkdir -p /minecraft/world && \
-        wget -c https://www.feed-the-beast.com/projects/ftb-presents-direwolf20-1-12/files/2534202 -O ftb.zip && \
+        wget -c https://www.feed-the-beast.com/projects/ftb-presents-direwolf20-1-12/files/2541246 -O ftb.zip && \
         unzip ftb.zip && \
         rm ftb.zip && \
         chmod u+x FTBInstall.sh ServerStart.sh && \
@@ -46,4 +46,4 @@ VOLUME ["/minecraft/world", "/minecraft/backups"]
 CMD ["/bin/bash", "./ServerStart.sh"]
 
 ##ENV MOTD A Minecraft (Direwolf20 1.10 1.13) Server Powered by Docker
-##ENV NVM_OPTS -Xms2048m -Xmx2048m
+##ENV NVM_OPTS -Xms6144m -Xmx6144m -Dfml.queryResult=confirm
